@@ -1,5 +1,6 @@
 ---
 - src: diodonfrost.packer
+- src: diodonfrost.vagrant
 - src: diodonfrost.terraform
 - src: diodonfrost.terragrunt
 - src: diodonfrost.sonar_scanner

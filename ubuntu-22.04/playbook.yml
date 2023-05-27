@@ -27,9 +27,18 @@
          - vim
          - whois
 
+    - name: Python venv
+      command: python3 -m venv /tmp/venv
+      args:
+        creates: /tmp/venv
+
     - name: Packer install
       include_role:
         name: diodonfrost.packer
+
+    - name: Vagrant install
+      include_role:
+        name: diodonfrost.vagrant
 
     - name: Terraform install
       include_role:
