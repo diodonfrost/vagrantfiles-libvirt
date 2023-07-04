@@ -44,6 +44,10 @@
       include_role:
         name: diodonfrost.terraform
 
+    - name: Waypoint install
+      include_role:
+        name: diodonfrost.waypoint
+
     - name: Terragrunt install
       include_role:
         name: diodonfrost.terragrunt
