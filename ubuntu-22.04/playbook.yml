@@ -48,6 +48,10 @@
       include_role:
         name: diodonfrost.waypoint
 
+    - name: Boundary install
+      include_role:
+        name: diodonfrost.boundary
+
     - name: Terragrunt install
       include_role:
         name: diodonfrost.terragrunt
@@ -71,3 +75,7 @@
         name: diodonfrost.p10k
       vars:
         zsh_plugin: ohmyzsh
+
+    - name: Glab install
+      include_role:
+        name: diodonfrost.glab
