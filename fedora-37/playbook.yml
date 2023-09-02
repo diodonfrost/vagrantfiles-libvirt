@@ -1,0 +1,91 @@
+- name: Configure Vagrant box
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Fedora | Update system packages
+      ansible.builtin.dnf:
+        update_cache: yes
+        name: "*"
+        state: latest
+
+    - name: Fedora | Default packages install
+      ansible.builtin.dnf:
+        name:
+          - ansible
+          - docker
+          - g++
+          - gcc
+          - git
+          - htop
+          - libffi-devel
+          - make
+          - net-tools
+          - nmap
+          - podman
+          - python3-devel
+          - python3-pip
+          - ruby
+          - ruby-devel
+          - vim
+          - whois
+        state: present
+
+    - name: Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Python venv
+      command: python3 -m venv /tmp/venv
+      args:
+        creates: /tmp/venv
+
+    - name: Packer install
+      include_role:
+        name: diodonfrost.packer
+
+    - name: Vagrant install
+      include_role:
+        name: diodonfrost.vagrant
+
+    - name: Terraform install
+      include_role:
+        name: diodonfrost.terraform
+
+    - name: Waypoint install
+      include_role:
+        name: diodonfrost.waypoint
+
+    - name: Boundary install
+      include_role:
+        name: diodonfrost.boundary
+
+    - name: Terragrunt install
+      include_role:
+        name: diodonfrost.terragrunt
+
+    - name: Sonar-scanner install
+      include_role:
+        name: diodonfrost.sonar_scanner
+
+    - name: Git-lfs install
+      include_role:
+        name: diodonfrost.git_lfs
+
+    - name: Ohmyzsh install
+      include_role:
+        name: diodonfrost.ohmyzsh
+      vars:
+        ohmyzsh_theme: powerlevel10k/powerlevel10k
+
+    - name: P10k install
+      include_role:
+        name: diodonfrost.p10k
+      vars:
+        zsh_plugin: ohmyzsh
+
+    - name: Glab install
+      include_role:
+        name: diodonfrost.glab

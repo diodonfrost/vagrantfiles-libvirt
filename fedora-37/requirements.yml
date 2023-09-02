@@ -1,0 +1,12 @@
+---
+- src: diodonfrost.packer
+- src: diodonfrost.vagrant
+- src: diodonfrost.terraform
+- src: diodonfrost.boundary
+- src: diodonfrost.waypoint
+- src: diodonfrost.terragrunt
+- src: diodonfrost.sonar_scanner
+- src: diodonfrost.git_lfs
+- src: diodonfrost.ohmyzsh
+- src: diodonfrost.p10k
+- src: diodonfrost.glab
